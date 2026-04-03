@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<ht lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truthful Resort</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+  <nav class="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">Truthful<span>Resort</span></a>
+    
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <ul class="nav-menu">
+      <li><a href="#home" class="nav-links"><img src="./images/home.png" alt="home"></a></li>
+      <li><a href="#suite" class="nav-links"><img src="./hero-image/suite" alt="suite"></a></li>
+      <li><a href="#about" class="nav-links"><img src="./hero-image/abt us.png" alt="about"></a></li>
+      <li><a href="#dining" class="nav-links"><img src="./hero-image/dining.png" alt="dining"></a></li>
+      <li><a href="#booking" class="nav-link-btn">Book Now</a></li>
+    </ul>
+  </div>
+</nav>
+    <!-- Header -->
+     <header>
+        <div class="carousel-container" id="home">
+  <div class="mySlides fade slider" >
+    <img src="./hero-image/maah.avif" style="width:100%"  alt="resort3">
+    <div class="text-overlay">
+      <h1>Infinite Horizons</h1>
+      <p>Experience the world's most iconic infinity pools.</p>
+    </div>
+  </div>
+
+  <div class="mySlides fade">
+    <img src="./hero-image/maahaa 2.avif" style="width:100%" alt="resort1">
+    <div class="text-overlay">
+      <h1>Private Villas</h1>
+      <p>Your own sanctuary tucked away in paradise.</p>
+    </div>
+  </div>
+
+  <div class="mySlides fade">
+    <img src="./hero-image/maahaa3.jpg" style="width:100%" alt="resort2">
+    <div class="text-overlay">
+      <h1>Gourmet Dining</h1>
+      <p>World-class chefs at your fingertips.</p>
+    </div>
+  </div>
+
+  <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+  <button class="next" onclick="plusSlides(1)">&#10095;</button>
+
+  <div class="dot-container">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+</div>
+     </header>
+
+     <main>
+        <!-- About Us -->
+
+        <section id="about" class="about-section">
+  <div class="container">
+    
+    <div class="about-row reveal">
+      <div class="about-image">
+        <img src="./hero-image/mb1.jpg" alt="Resort Heritage">
+      </div>
+      <div class="about-text">
+        <span class="subtitle">Our Heritage</span>
+        <h2>A Legacy of Luxury</h2>
+        <p>Founded in 2026, our resort began as a private coastal sanctuary. Today, we blend that historic charm with modern soul, offering a retreat that feels like home, only more beautiful.</p>
+        <a href="#" class="btn-outline">Read Our Story</a>
+      </div>
+    </div>
+
+    <div class="about-row reverse reveal">
+      <div class="about-image">
+        <img src="./hero-image/r3.avif" alt="Resort Wellness">
+      </div>
+      <div class="about-text">
+        <span class="subtitle">Our Philosophy</span>
+        <h2>Slow Down, Breathe In</h2>
+        <p>We believe luxury isn't about gold taps; it's about time and space. Our "Slow Stay" initiative ensures every guest finds their own pace, from sunrise yoga to midnight star-gazing.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Suites -->
+
+<section id="suite" class="suites-section">
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterSuites('all', this)">All Suites</button>
+    <button class="filter-btn" onclick="filterSuites('ocean', this)">Ocean Front</button>
+    <button class="filter-btn" onclick="filterSuites('villa', this)">Private Villas</button>
+  </div>
+
+  <div id="explore-prompt" class="explore-prompt">Viewing Tip: Click any "Explore" button below to preview suite details and photos.</div>
+
+  <div id="suites-grid" class="suites-grid">
+    <div class="suite-card" data-category="ocean">
+      <div class="suite-badge">Most Popular</div>
+      <img src="./hero-image/s1.jpg" alt="Azure Suite">
+      <div class="suite-info">
+        <h3>The Azure Suite</h3>
+        <p>120m² • King Bed • Panoramic Sea View</p>
+        <div class="price">From &#8373;400 <span>/ night</span></div>
+        <button class="view-details">Explore Suite</button>
+      </div>
+    </div>
+
+    <div class="suite-card" data-category="villa">
+      <img src="./hero-image/s2.jpg" alt="Royal Villa">
+      <div class="suite-info">
+        <h3>Royal Palm Villa</h3>
+        <p>350m² • 2 Bedrooms • Private Infinity Pool</p>
+        <div class="price">From &#8373;1,200 <span>/ night</span></div>
+        <button class="view-details">Explore Villa</button>
+      </div>
+    </div>
+
+    <div class="suite-card" data-category="villa">
+      <img src="./hero-image/s3.jpg" alt="Royal Villa">
+      <div class="suite-info">
+        <h3>Royal Palm Villa</h3>
+        <p>350m² • 2 Bedrooms • Private Infinity Pool</p>
+        <div class="price">From &#8373;1,200 <span>/ night</span></div>
+        <button class="view-details">Explore Villa</button>
+      </div>
+    </div>
+
+    <div class="suite-card" data-category="villa">
+      <img src="./hero-image/s4.jpg" alt="Royal Villa">
+      <div class="suite-info">
+        <h3>Royal Palm Villa</h3>
+        <p>350m² • 2 Bedrooms • Private Infinity Pool</p>
+        <div class="price">From &#8373;1,200 <span>/ night</span></div>
+        <button class="view-details">Explore Villa</button>
+      </div>
+    </div>
+
+    <div class="suite-card" data-category="villa">
+      <img src="./hero-image/baka.avif" alt="Royal Villa">
+      <div class="suite-info">
+        <h3>Maaha Beach Resort </h3>
+        <p>350m² • 2 Bedrooms • Private Infinity Pool</p>
+        <div class="price">From &#8373;1,200 <span>/ night</span></div>
+        <button class="view-details">Explore Villa</button>
+      </div>
+    </div>
+
+    <div class="suite-card" data-category="villa">
+      <img src="./hero-image/s5.jpg" alt="Royal Villa">
+      <div class="suite-info">
+        <h3>Royal Palm Villa</h3>
+        <p>350m² • 2 Bedrooms • Private Infinity Pool</p>
+        <div class="price">From &#8373;1,200 <span>/ night</span></div>
+        <button class="view-details">Explore Villa</button>
+      </div>
+    </div>
+
+
+  
+    
+  </div>
+</section>
+
+<!-- dinning -->
+
+<section id="dining" class="dining-container" >
+  <div class="dining-header">
+    <span class="subtitle">Truthful Excellence</span>
+    <h2>Taste the Horizon</h2>
+  </div>
+
+  <div class="dining-grid">
+    <div class="dining-card">
+      <div class="dining-img">
+        <img src="./hero-image/d1.jpg" alt="Azure Grill">
+      </div>
+      <div class="dining-info">
+        <h3>Azure Ocean Grill</h3>
+        <p class="tagline">Fresh Catch • Open-Air Dining</p>
+        <p class="description">Savour locally sourced seafood prepared over sustainable charcoal, with the sound of the waves as your soundtrack.</p>
+        <div class="dining-meta">
+          <span>🕒 18:00 - 23:00</span>
+          <span>👔 Smart Casual</span>
+        </div>
+        <button class="menu-btn" onclick="toggleMenu('Azure')">View Dinner Menu</button>
+      </div>
+    </div>
+
+    <div class="dining-card">
+      <div class="dining-img">
+        <img src="./hero-image/d2.jpg" alt="The Spice Room">
+      </div>
+      <div class="dining-info">
+        <h3>The Spice Room</h3>
+        <p class="tagline">Authentic Fusion • Fine Dining</p>
+        <p class="description">An intimate journey through Eastern spices and Western techniques, led by our Michelin-starred executive chef.</p>
+        <div class="dining-meta">
+          <span>🕒 19:00 - 22:30</span>
+          <span>👔 Formal</span>
+        </div>
+        <button class="menu-btn" onclick="toggleMenu('Spice')">View Tasting Menu</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="menu-modal" class="modal-overlay" onclick="toggleMenu()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <h2 id="modal-title">Menu</h2>
+    <div id="menu-items" class="menu-list">
+      </div>
+    <button class="close-modal" onclick="toggleMenu()">&times;</button>
+  </div>
+</div>
+
+<!-- bookings -->
+ <div id="booking" class="booking-wrapper">
+  <div class="booking-container">
+    <form id="booking-form" class="booking-flex">
+      
+      <div class="input-group">
+        <label for="checkin">Check-In</label>
+        <input type="date" id="checkin" required>
+      </div>
+
+      <div class="input-group">
+        <label for="checkout">Check-Out</label>
+        <input type="date" id="checkout" required>
+      </div>
+
+      <div class="input-group">
+        <label for="guests">Guests</label>
+        <select id="guests">
+          <option value="1">1 Adult</option>
+          <option value="2" selected>2 Adults</option>
+          <option value="3">3 Adults</option>
+          <option value="4">4+ Adults</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <button type="submit" class="book-btn">Check Availability</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div id="results-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Available Suites</h3>
+    <div id="rooms-list"></div>
+  </div>
+</div>
+
+<div id="notification-modal" class="modal-overlay" onclick="closeNotificationModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <h2 id="notification-title">Notification</h2>
+    <p id="notification-message"></p>
+    <button class="close-modal" onclick="closeNotificationModal()">&times;</button>
+  </div>
+</div>
+
+    <aside id="stay-booking" class="booking-sidebar">
+                <div class="booking-card">
+                    <h3>Request a Stay</h3>
+                    <form id="requestForm">
+                        <label for="guestName">Name</label>
+                        <input type="text" name="guestName" placeholder="Full Name" required>
+                        
+                        <label for="guestNumber">Phone Number</label>
+                        <input type="tel" name="guestNumber" placeholder="Phone Number" required>
+                        
+                        <label for="dates">Preferred Dates</label>
+                        <input type="date" name="dates" placeholder="Check-in">
+
+                        <input type="date" name="dates" placeholder="Check-out">
+                        
+                        <button type="submit" id="submitBtn">Send Inquiry</button>
+                    </form>
+                </div>
+            </aside>
+     </main>
+
+
+
+     <footer class="resort-footer">
+    <div class="footer-wrap">
+        <div class="footer-section">
+            <h2 class="footer-logo"> <a href="#home" class="nav-logo">Truthful<span>Resort</span></a></h2>
+            <p>
+               +233 (0) 556408910</p>
+            <div class="social-icons">
+                <a href="https://github.com/Eben-Morata"><img src="./hero-image/github.png" alt=""></a>
+                <a href="https://www.linkedin.com/in/eben-morata-05161426a/"><img src="./hero-image/linkedin.avif" alt=""></a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#suite">The Villas</a></li>
+                <li><a href="#dining">Dining & Bars</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Newsletter</h3>
+            <p>Join for exclusive seasonal offers.</p>
+            <form id="footer-newsletter">
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-legal">
+        <p>&copy; 2026 Truthful Resort. All Rights Reserved.</p>
+    </div>
+
+    <!-- toggle -->
+    <div class="theme-switch-wrapper">
+    <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round"></div>
+    </label>
+    <span id="theme-text">Mode</span>
+</div>
+</footer>
+
+
+     <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,960 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+}
+
+:root {
+  --bg-dark: #121212;
+  --accent: #d4af37; /* Luxury Gold */
+  --text-muted: #a0a0a0;
+  --bg-color: #ffffff;
+  --text-color1: #1a1a1a;
+  /* Luxury Gold */
+  --card-bg: #f4f7f6;
+
+  /* --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --accent: #ffdf80;
+    --card-bg: #1e1e1e; */
+}
+
+/* 2. Apply Variables to Elements */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: 0.3s ease; /* Smooth transition when switching */
+  font-family: "Segoe UI", sans-serif;
+}
+
+.navbar {
+  background: var(--bg-color);
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding: 20px;
+  box-shadow: 3px 2px 3px var(--text-color);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-family: sans-serif;
+  font-weight: bold;
+  position: relative; /* Required for the absolute underline */
+  padding: 8px 0;
+  transition: color 0.3s ease;
+  align-items: center;
+}
+
+/* 1. Create the underline (The "Hidden" state) */
+.nav-menu::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #d4af37; /* Gold accent */
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1); /* Smooth easing */
+}
+
+/* 2. The "Hover" state for a little preview */
+.nav-menu:hover::after {
+  width: 50%;
+}
+
+/* 3. The "Active" state (The Animation) */
+.nav-menu.active {
+  color: var(--text-color);
+}
+
+.nav-menu.active::after {
+  width: 100%; /* Expands to full width when active */
+}
+
+.nav-menu img {
+  width: 30px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  box-shadow: 2px 3px 2px var(--text-muted);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 50px;
+}
+
+.nav-logo {
+  color: var(--text-color);
+  align-self: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 4px 3px 3px 3px var(--text-color1);
+  border-radius: 50%;
+  padding: 10px 20px;
+  border: 1px solid var(--text-color1);
+
+  animation: slideTops 4s ease-in-out infinite;
+}
+
+@keyframes slideTops {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.nav-logo span {
+  color: #d4af37;
+  text-decoration: underline;
+} /* Gold accent */
+
+.nav-links {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5rem 5px;
+}
+
+.nav-link-btn {
+  background: #d4af37;
+  padding: 10px 20px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: var(--text-color1);
+  font-weight: bold;
+  margin-left: 10px;
+  box-shadow: 3px 2px 2px 3px var(--text-muted);
+
+  animation: slideTap 0.4s ease-in-out infinite;
+}
+
+@keyframes slideTap {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+/* Mobile Responsive Logic */
+@media screen and (max-width: 960px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: -1000px; /* Hidden by default */
+    left: 0;
+    transition: all 0.5s ease;
+    background: var(--bg-color);
+  }
+
+  .nav-menu.active {
+    top: 80px; /* Slid down */
+  }
+
+  .menu-toggle {
+    display: block;
+    align-self: center;
+    cursor: pointer;
+  }
+
+  .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background: var(--text-color1);
+    display: block;
+  }
+}
+
+/* header */
+
+.carousel-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  height: 80vh; /* Takes up most of the screen */
+}
+
+.mySlides {
+  display: none;
+  height: 100%;
+}
+
+.mySlides img {
+  height: 100%;
+  object-fit: cover; /* Keeps images from looking stretched */
+}
+
+/* Text Overlay */
+.text-overlay {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: var(--text-color);
+  text-shadow: 2px 2px 10px var(--text-color1);
+}
+
+.text-overlay h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+/* Navigation */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 7px;
+  user-select: none;
+  border: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover,
+.next:hover {
+  background-color: var(--text-color1);
+  color: var(--text-color);
+}
+
+/* Dots */
+.dot-container {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: var(--text-muted);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #d4af37;
+} /* Gold active dot */
+
+/* Fade Animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* about */
+.about-section {
+  padding: 80px 0;
+  background: var(--text-color);
+  color: var(--text-color1);
+  overflow: hidden;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 100px;
+}
+
+.about-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-image {
+  flex: 1;
+  position: relative;
+}
+.about-image img {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 20px 20px 0px var(--card-bg); /* Decorative offset background */
+}
+
+.about-text {
+  flex: 1;
+}
+.about-text .subtitle {
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.about-text h2 {
+  font-family: "Georgia", serif;
+  font-size: 2.5rem;
+  margin: 15px 0;
+}
+.about-text p {
+  line-height: 1.8;
+  color: var(--text-color1);
+  margin-bottom: 25px;
+}
+
+/* Scroll Reveal Initial State */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .about-row,
+  .about-row.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* suite section */
+.suites-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.filter-bar {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.explore-prompt {
+  text-align: center;
+  margin: 0 auto 25px;
+  color: #ffbf00;
+  font-weight: 600;
+}
+.explore-view {
+  text-align: center;
+}
+.explore-view p {
+  margin: 8px 0 0;
+  color: var(--text-color);
+}
+.filter-btn {
+  background: var(--bg-color);
+  border: 1px solid #ddd;
+  padding: 10px 25px;
+  margin: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 50px;
+  color: var(--text-color);
+}
+.filter-btn.active {
+  background-color: #d4af37;
+  color: var(--text-color);
+  border-color: var(--text-muted);
+}
+
+.suites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.suite-card {
+  background: var(--text-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px var(--text-color1);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.suite-card:hover {
+  transform: translateY(-10px);
+}
+
+.suite-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+.suite-card:hover img {
+  transform: scale(1.05);
+}
+
+.suite-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #d4af37;
+  color: var(--text-color);
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  z-index: 2;
+  border-radius: 2px;
+}
+
+.suite-info {
+  padding: 25px;
+}
+.suite-card .suite-info h3 {
+  margin: 0 0 10px;
+  font-family: "Georgia", serif;
+  color: var(--text-color1);
+}
+.suite-info p {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--text-color1);
+  margin-bottom: 15px;
+}
+.price span {
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.view-details {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--text-color1);
+  background: transparent;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text-color1);
+}
+.view-details:hover {
+  background: var(--text-color1);
+  color: #b8962d;
+}
+
+/* dinning section */
+.dining-container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: "Helvetica", sans-serif;
+}
+
+.dining-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: slideUp 1s ease-in-out;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100px);
+  }
+}
+
+.subtitle {
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.dining-header h2 {
+  font-family: "Georgia", serif;
+  font-size: 2.8rem;
+  margin-top: 10px;
+}
+
+.dining-info h3 {
+  color: var(--text-color1);
+}
+
+.dining-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.dining-card {
+  background: var(--text-color);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px var(--text-color1);
+}
+
+.dining-img img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.dining-card:hover .dining-img img {
+  transform: scale(1.05);
+}
+
+.dining-info {
+  padding: 30px;
+}
+.tagline {
+  color: #d4af37;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.dining-info h3 {
+  font-family: "Georgia", serif;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+.description {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.dining-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.menu-btn {
+  width: 100%;
+  background: var(--text-color1);
+  color: var(--text-muted);
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu-btn:hover {
+  background: #d4af37;
+  color: var(--text-color1);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: black;
+  box-shadow: 4px 3px 3px var(--text-muted);
+}
+
+.menu-list {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+}
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+.close-modal {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: #d4af37;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close {
+  margin: 30px 0;
+  padding: 5px 10px;
+  background-color: #d4af37;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* booking section */
+.booking-wrapper {
+  box-shadow: 3px 2px 3px 3px var(--text-muted);
+  padding: 20px 0;
+  position: sticky;
+  top: 80px; /* Sits below your navbar */
+  z-index: 100;
+  border-bottom: 2px solid #d4af37; /* Luxury Gold accent */
+  border-radius: 20px;
+}
+
+.booking-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.booking-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.input-group {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  color: #d4af37;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group select {
+  background: var(--accent);
+  border: 1px solid #333;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.book-btn {
+  background: var(--text-color1);
+  color: var(--accent);
+  border: none;
+  padding: 14px 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.book-btn:hover {
+  background: #b8962d;
+  transform: translateY(-2px);
+  color: var(--text-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-flex {
+    flex-direction: column;
+  }
+  .input-group {
+    width: 100%;
+  }
+}
+
+/* booking */
+.booking-card {
+  background: var(--text-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+  color: #34495e;
+}
+.booking-card h2 {
+  color: var(--text-color1);
+  border-bottom: 2px solid #b8962d;
+  padding-bottom: 10px;
+}
+
+.booking-card input,
+.booking-card textarea,
+.booking-card select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.booking-card button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #b8962d;
+  color: var(--text-color1);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+.booking-card button:hover {
+  background-color: var(--text-color1);
+  color: var(--text-color);
+}
+
+/* footer */
+
+.resort-footer {
+  color: var(--text-color);
+  padding: 80px 5% 20px;
+  font-family: "Playfair Display", serif; /* Use a serif font for luxury feel */
+}
+
+.footer-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-section h3 {
+  color: var(--text-muted);
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.resort-footer .footer-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-section p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: var(--accent);
+}
+
+/* Newsletter Input */
+#footer-newsletter {
+  display: flex;
+  margin-top: 15px;
+}
+
+#footer-newsletter input {
+  background: transparent;
+  border: none;
+  padding: 12px;
+  color: var(--text-color);
+  width: 70%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px var(--text-color);
+  outline: none;
+}
+
+#footer-newsletter button {
+  background: var(--accent);
+  color: var(--text-color1);
+  border: none;
+  padding: 12px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+}
+
+.footer-legal {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+  color: var(--text-color);
+  font-size: 0.8rem;
+}
+
+.social-icons img {
+  height: 40px;
+  border-radius: 70%;
+  margin-left: 20px;
+  box-shadow: 2px 2px 2px 2px var(--text-color1);
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .footer-wrap {
+    flex-direction: column;
+    text-align: center;
+  }
+  #footer-newsletter {
+    justify-content: center;
+  }
+}
+
+/* toggle */
+/* 1. Define Color Palettes */
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --accent: #ffdf80;
+  --card-bg: #1e1e1e;
+}
+
+.villa-card {
+  background-color: var(--text-color1);
+}
+
+/* 3. Slider Styling */
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+#theme-text {
+  color: var(--text-muted);
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--accent);
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
